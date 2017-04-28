@@ -227,6 +227,7 @@
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Program.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Startup.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Controllers\AccountController.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Controllers\FriendController.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Controllers\HomeController.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Controllers\ManageController.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\ApplicationDbContext.cs
@@ -234,8 +235,13 @@ C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migra
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428165644_AddUserNameLogin.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428165644_AddUserNameLogin.Designer.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428171957_AddRequestsAndFriendLists.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428171957_AddRequestsAndFriendLists.Designer.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\ApplicationUser.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendList.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendRequestList.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendRequestsUserMade.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\LoginViewModel.cs
@@ -243,6 +249,10 @@ C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\Acc
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\ResetPasswordViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\SendCodeViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\AccountViewModels\VerifyCodeViewModel.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendViewModels\FriendRequestsViewModel.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendViewModels\FriendsViewModel.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendViewModels\RequestsUserMadeViewModel.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\FriendViewModels\ViewUsersViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\ManageViewModels\AddPhoneNumberViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\ManageViewModels\ChangePasswordViewModel.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
