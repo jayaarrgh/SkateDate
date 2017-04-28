@@ -1,0 +1,51 @@
+﻿@model SkateDate.Models.PostsViewModel.PostViewModel
+
+<p>Click to see all posts from <a asp-controller="Posts" asp-action="UsersPosts" asp-route-username="@Model.Post.Author"> @Model.Post.Author</a></p>
+<p>@Model.Post.Message</p>
+<p>@Model.Post.CreatedDate</p>
+@{ if (User.Identity.Name == Model.Post.Author)
+    {<div>
+        <p><a asp-controller="Posts" asp-action="EditPost" asp-route-PostID="@Model.Post.PostID">Click Here to Edit Post</a></p>
+        <p><a asp-controller="Posts" asp-action="RemovePost" asp-route-PostID="@Model.Post.PostID">Click Here to Remove Post</a></p>
+    </div> }
+}
+<hr />
+@* NEW COMMENT FORM HERE *@
+<div>
+    <form asp-controller="Posts" asp-action="AddComment" method="post">
+        <label>Add Comment<textarea asp-for="@Model.NewComment.TheComment"></textarea></label>
+        <input type="hidden" asp-for="@Model.Post.PostID" name="Post.PostID" />
+        <input type="submit" />
+    </form>
+</div>
+
+<hr />
+@* EXISTING COMMENTS HERE *@
+<div>
+    @foreach (var comment in Model.Comments)
+    {
+        <div>
+            <p>@comment.Author</p>
+            <p>@comment.TheComment</p>
+            @{ if (User.Identity.Name == Model.Post.Author || User.Identity.Name == comment.Author)
+                {
+                    <form asp-controller="Posts" asp-action="RemoveComment" method="post">
+                        <input asp-for="@Model.Post.PostID" type="hidden" name="Post.PostID" />
+                        <input asp-for="@comment.CommentID" type="hidden" name="NewComment.CommentID" />
+                        <input type="submit" value="Remove Comment" />
+                    </form>
+                }
+            }
+            @{ if (User.Identity.Name == comment.Author)
+                {
+                    <form asp-controller="Posts" asp-action="EditComment" method="get">
+                        <input asp-for="@Model.Post.PostID" type="hidden" name="Post.PostID" />
+                        <input asp-for="@comment.CommentID" type="hidden" name="Comment.CommentID" />
+                        <input type="submit" value="Edit Comment" />
+                    </form>
+                }
+            }
+        </div>
+        <hr />
+    }
+</div>

@@ -16,8 +16,8 @@ namespace SkateDate.Data
         public DbSet<FriendRequestsUserMade> FriendRequestsUserMades { get; set; }
         public DbSet<FriendList> FriendLists { get; set; }
 
-        //public DbSet<Post> Posts { get; set; }
-        //public DbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

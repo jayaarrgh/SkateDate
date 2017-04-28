@@ -1,0 +1,142 @@
+﻿@model SkateDate.Models.PostsViewModel.NewPostViewModel
+
+<form asp-controller="Posts" asp-action="AddPost" method="post">
+    <label>
+        Post Message:
+        <textarea asp-for="@Model.Message"></textarea>
+    </label>
+    <input type="submit" />
+</form>
+
+
+
+@*  MY SKATE DATE API KEY: AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8
+
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8&callback=initMap"
+    type="text/javascript"></script>
+
+
+      BELOW ARE SOME JAVASCRIPT GOOGLE MAPS API EXAMPLES AND EXPLANATIONS FROM GM API DOCUMENTATION
+
+              I want users to be able to set and move markers (if they are the post author)
+              When the post is viewed, I do not want this functionality.
+
+          HOW I WILL SET THESE VALUES && SAVE TO DATABASE && RETRIEVE FROM DATABASE FOR VIEWING AFTER POSTED ?????
+          Lookat: https://developers.google.com/maps/documentation/javascript/info-windows-to-db
+          https://www.sanwebe.com/2013/10/google-map-v3-editing-saving-marker-in-database
+
+              ========================================================================================================
+
+              To remove a marker from the map, call the setMap() method passing null as the argument. EX: marker.setMap(null);
+
+              Note that the above method does not delete the marker. It simply removes the marker from the map.
+              If instead you wish to delete the marker, you should remove it from the map, and then set the marker itself to null.
+
+              ========================================================================================================
+
+
+
+          BELOW: seting marker examples
+
+          adds an event listener for the map, and creates a marker when the user (double)clicks on the map at the clicked location.
+          Allows users to move a marker on the map by setting the marker's draggable property to true in the marker options.
+
+     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8&callback=initMap"
+    type="text/javascript">
+
+    function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 4,
+                      center: {lat: -25.363882, lng: 131.044922 }
+                    });
+
+                    map.addListener('dblclick', function(e) {
+                      placeMarkerAndPanTo(e.latLng, map);
+                    });
+                  }
+
+                  function placeMarkerAndPanTo(latLng, map) {
+                    var marker = new google.maps.Marker({
+                      position: latLng,
+                      map: map,
+                      draggable: true,
+                    });
+                    map.panTo(latLng);
+                  }
+    </script>
+
+              ========================================================================================================
+              THIS WONT WORK ASNEEDED, will need to beable to move and remove markers for user errorson intial set, and forediting
+
+
+                  <!DOCTYPE html>
+              <html>
+                <head>
+                  <title>Accessing arguments in UI events</title>
+                  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+                  <meta charset="utf-8">
+                  <style>
+                    /* Always set the map height explicitly to define the size of the div
+                     * element that contains the map. */
+                    #map {
+                      height: 100%;
+                    }
+                    /* Optional: Makes the sample page fill the window. */
+                    html, body {
+                      height: 100%;
+                      margin: 0;
+                      padding: 0;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div id="map"></div>
+                  <script>
+                    function initMap() {
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: {lat: -25.363882, lng: 131.044922 }
+                      });
+
+                      map.addListener('click', function(e) {
+                        placeMarkerAndPanTo(e.latLng, map);
+                      });
+                    }
+
+                    function placeMarkerAndPanTo(latLng, map) {
+                      var marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                      });
+                      map.panTo(latLng);
+                    }
+                  </script>
+                  <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8&callback=initMap">
+                  </script>
+                </body>
+              </html>
+          ============================================================================================================
+
+          My attempt at a save data function
+
+          function saveData() {
+          var latlng = marker.getPosition();
+          var url = "phpsqlinfo_addrow.php?lat=" + latlng.lat() + "&lng=" + latlng.lng();
+          }
+
+      =======================
+      var point = new google.maps.LatLng(
+                    parseFloat(markerElem.getAttribute('lat')),
+                    parseFloat(markerElem.getAttribute('lng')));
+
+      // OnView  map options == postition:point
+
+
+       google.maps.event.addListener(map, 'click', function(event) {
+            marker = new google.maps.Marker({
+              position: event.latLng,
+              map: map
+            });
+
+*@

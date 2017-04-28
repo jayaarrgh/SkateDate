@@ -1,0 +1,12 @@
+﻿@model SkateDate.Models.FriendViewModels.FriendsViewModel
+
+@foreach (var friend in Model.Friends)
+{
+    <form asp-controller="Friend" asp-action="RemoveFriend" method="post">
+        <p>
+            @friend.FriendID is currently your friend!
+        <input type="hidden" name="hidden" value="@friend.FriendID" />
+        <input type="submit" name="submit" value="Remove Friend" />
+    </p>
+</form>
+}

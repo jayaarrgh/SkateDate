@@ -1,0 +1,15 @@
+﻿@model SkateDate.Models.PostsViewModel.IndexViewModel
+<p>Click <a asp-controller="Posts" asp-action="NewPost">HERE</a> to make a new post.</p>
+<p>Click <a asp-controller="Posts" asp-action="MyPosts">HERE</a> to view your posts.</p>
+<hr />
+@foreach (var post in Model.Posts)
+{
+    <div>
+        <h4>@post.Author</h4>
+        <p>@post.Message</p>
+        <p>@post.CreatedDate</p>
+        <p>Click to see all posts from <a asp-controller="Posts" asp-action="UsersPosts" asp-route-username="@post.Author"> @post.Author.</a></p>
+        <p>Or click <a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">HERE</a> to view this post and comments.</p>
+    </div>
+    <hr />
+}

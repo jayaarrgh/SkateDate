@@ -1,0 +1,12 @@
+﻿@model SkateDate.Models.PostsViewModel.EditPostViewModel
+
+<h2>Edit Your Comment</h2>
+<div>
+    <form asp-controller="Posts" asp-action="EditComment" method="post">
+        <label>Edit your comment</label>
+        <textarea asp-for="@Model.Comment.TheComment">@Model.Comment.TheComment</textarea>
+        <input type="hidden" name="Post.PostID" value="@Model.Post.PostID" />
+        <input type="hidden" name="Comment.CommentID" value="@Model.Comment.CommentID" />
+        <input type="submit" />
+    </form>
+</div>

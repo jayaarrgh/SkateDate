@@ -1,0 +1,16 @@
+﻿@model SkateDate.Models.FriendViewModels.FriendRequestsViewModel
+<h2>My Friend Requests</h2>
+
+<a asp-controller="Friend" asp-action="RequestsIHaveMade">See requests you have made that are still pending</a>
+@foreach (var request in Model.Requests)
+{
+    <p>@request.RequesterID beseaches you to be thier friend!</p>
+    <form asp-controller="Friend" asp-action="AddFriend" method="post">
+        <input type="hidden" name="hidden" value="@request.RequesterID" />
+        <input type="submit" name="submit" value="Add Friend" />
+    </form>
+    <form asp-controller="Friend" asp-action="DenyRequest" method="post">
+        <input type="hidden" name="hidden" value="@request.RequesterID" />
+        <input type="submit" name="submit" value="Deny Request" />
+    </form>
+}

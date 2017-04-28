@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Find Friends!";
+}
+
+<h2>Find Friends</h2>
+<h3>Friends, users requested, and those that have requested your friendship will not be shown</h3>
+
+@foreach (var user in Model.Users)
+{
+    <form asp-controller="Friend" asp-action="FriendRequester" method="post">
+        <p>
+            @user.UserName<span>
+                <input type="hidden" name="hidden" value="@user.UserName" />
+                <input type="submit" name="submit" value="Request Friendship" />
+            </span>
+        </p>
+    </form>
+}
