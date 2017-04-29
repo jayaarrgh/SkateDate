@@ -5,6 +5,7 @@
         <p>@post.Author</p>    @*Link to profile instead?*@
         <p>@post.Message</p>
         <p>@post.CreatedDate</p>
-        <p><a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">Click here to access this post for commenting, editing or removal</a></p>
+        <p><a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">Click here to comment on this post</a></p>
     </div>
+    <hr />
 }

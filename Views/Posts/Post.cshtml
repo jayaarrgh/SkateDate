@@ -40,7 +40,7 @@
                 {
                     <form asp-controller="Posts" asp-action="EditComment" method="get">
                         <input asp-for="@Model.Post.PostID" type="hidden" name="Post.PostID" />
-                        <input asp-for="@comment.CommentID" type="hidden" name="Comment.CommentID" />
+                        <input asp-for="@comment.CommentID" type="hidden" name="NewComment.CommentID" />
                         <input type="submit" value="Edit Comment" />
                     </form>
                 }
