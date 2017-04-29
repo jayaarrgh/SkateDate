@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SkateDate.Controllers
 {
-    [Authorize]
+    
     public class FriendController : Controller
     {
         private ApplicationDbContext context;
@@ -30,9 +30,10 @@ namespace SkateDate.Controllers
             foreach (var user in users)
             {
                 //If not friends, and neither user has requested the others friendship, display that user as a possible requestee
+                // Thisworked before andnow it isnt...
                 if (context.FriendLists.SingleOrDefault(f => f.OwnerID == User.Identity.Name && f.FriendID == user.UserName) == null
-                    && ((context.FriendRequestLists.SingleOrDefault(l => l.OwnerID == user.UserName && l.RequesterID == User.Identity.Name) == null)
-                    || (context.FriendRequestsUserMades.SingleOrDefault(l => l.OwnerID == User.Identity.Name && l.RequesteeID == user.UserName) == null)))
+                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID == user.UserName && l.RequesterID == User.Identity.Name) == null)
+                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID == User.Identity.Name && l.RequesterID == user.UserName) == null))
                 {
                     usersnotfriends.Add(user);
                 }
