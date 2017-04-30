@@ -1,5 +1,8 @@
 ﻿@model SkateDate.Models.PostsViewModel.NewPostViewModel
-
+@{
+    ViewData["Title"] = "Make a Post";
+}
+<h2>Make a new post</h2>
 <form asp-controller="Posts" asp-action="AddPost" method="post">
     <label>
         Post Message:

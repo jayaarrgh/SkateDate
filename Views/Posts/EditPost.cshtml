@@ -1,5 +1,7 @@
 ﻿@model SkateDate.Models.PostsViewModel.EditPostViewModel
-
+@{
+    ViewData["Title"] = "Edit Post";
+}
 <h2>Edit Your Post</h2>
 <div>
     <form asp-controller="Posts" asp-action="EditPost" method="post">

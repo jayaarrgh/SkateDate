@@ -1,10 +1,13 @@
-﻿
+﻿@{
+    ViewData["Title"] = String.Format("{0}'s Posts", Model[0].Author);
+}
+@{ <h2>@String.Format("{0}'s Posts", Model[0].Author)</h2>}
 @foreach (var post in Model)
 {
     <div>
-        <p>@post.Author</p>    @*Link to profile instead?*@
-        <p>@post.Message</p>
-        <p>@post.CreatedDate</p>
+        <p>Author: @post.Author</p>    @*Link to profile instead?*@
+        <p>Message: @post.Message</p>
+        <p>Created: @post.CreatedDate</p>
         <p><a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">Click here to comment on this post</a></p>
     </div>
     <hr />

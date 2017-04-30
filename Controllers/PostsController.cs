@@ -129,11 +129,11 @@ namespace SkateDate.Controllers
         public IActionResult Post(int PostID)
         {
             var post = context.Posts.Include(c => c.Comments).Single(p => p.PostID == PostID);
-            //var comments = context.Comments.Where(p => p.PostID == PostID).ToList();
             string author = post.Author;
             string currentuser = User.Identity.Name;
 
-            if (currentuser == author || currentuser == context.FriendLists.Single(u => u.OwnerID == author && u.FriendID == currentuser).FriendID)
+            if (currentuser == author || currentuser == context.FriendLists.Single(u =>
+                    u.OwnerID == author && u.FriendID == currentuser).FriendID)
             {
                 PostViewModel model = new PostViewModel()
                 {
@@ -142,10 +142,7 @@ namespace SkateDate.Controllers
                 };
                 return View(model);
             }
-            else
-            {
-                return Redirect("/Friend"); // SHOULD Redirect to an error
-            }
+            return Redirect("/Friend"); // SHOULD Redirect to an error
         }
 
 
@@ -157,10 +154,7 @@ namespace SkateDate.Controllers
             {
                 return View(posts);
             }
-            else
-            {
-                return Redirect("/Friend");
-            }
+            return Redirect("/Friend");
         }
 
         [HttpPost]

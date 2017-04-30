@@ -1,8 +1,10 @@
 ﻿@model SkateDate.Models.PostsViewModel.PostViewModel
-
+@{
+    ViewData["Title"] = "View Post";
+}
 <p>Click to see all posts from <a asp-controller="Posts" asp-action="UsersPosts" asp-route-username="@Model.Post.Author"> @Model.Post.Author</a></p>
-<p>@Model.Post.Message</p>
-<p>@Model.Post.CreatedDate</p>
+<p>Message: @Model.Post.Message</p>
+<p>Created: @Model.Post.CreatedDate</p>
 @{ if (User.Identity.Name == Model.Post.Author)
     {<div>
         <p><a asp-controller="Posts" asp-action="EditPost" asp-route-PostID="@Model.Post.PostID">Click Here to Edit Post</a></p>
@@ -25,8 +27,8 @@
     @foreach (var comment in Model.Comments)
     {
         <div>
-            <p>@comment.Author</p>
-            <p>@comment.TheComment</p>
+            <p>Author: @comment.Author</p>
+            <p>Commented: @comment.TheComment</p>
             @{ if (User.Identity.Name == Model.Post.Author || User.Identity.Name == comment.Author)
                 {
                     <form asp-controller="Posts" asp-action="RemoveComment" method="post">

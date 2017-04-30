@@ -1,5 +1,9 @@
 ﻿@model SkateDate.Models.FriendViewModels.RequestsUserMadeViewModel
-<h2>Friend Requests I Have Made</h2>
+@{
+    ViewData["Title"] = "Requests I've Made";
+}
+
+<h2>Friend Requests I've Made</h2>
 
 @foreach (var request in Model.Requests)
 {

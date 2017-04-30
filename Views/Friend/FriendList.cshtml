@@ -1,5 +1,8 @@
 ﻿@model SkateDate.Models.FriendViewModels.FriendsViewModel
-
+@{
+    ViewData["Title"] = "FriendList";
+}
+<h2>My FriendList</h2>
 @foreach (var friend in Model.Friends)
 {
     <form asp-controller="Friend" asp-action="RemoveFriend" method="post">

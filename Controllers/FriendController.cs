@@ -8,9 +8,10 @@ using SkateDate.Data;
 using SkateDate.Models;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace SkateDate.Controllers
 {
-    
+    [Authorize]
     public class FriendController : Controller
     {
         private ApplicationDbContext context;
@@ -30,10 +31,12 @@ namespace SkateDate.Controllers
             foreach (var user in users)
             {
                 //If not friends, and neither user has requested the others friendship, display that user as a possible requestee
-                // Thisworked before andnow it isnt...
-                if (context.FriendLists.SingleOrDefault(f => f.OwnerID == User.Identity.Name && f.FriendID == user.UserName) == null
-                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID == user.UserName && l.RequesterID == User.Identity.Name) == null)
-                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID == User.Identity.Name && l.RequesterID == user.UserName) == null))
+                if (context.FriendLists.SingleOrDefault(f => f.OwnerID
+                == User.Identity.Name && f.FriendID == user.UserName) == null
+                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID
+                    == user.UserName && l.RequesterID == User.Identity.Name) == null)
+                    && (context.FriendRequestLists.SingleOrDefault(l => l.OwnerID
+                    == User.Identity.Name && l.RequesterID == user.UserName) == null))
                 {
                     usersnotfriends.Add(user);
                 }
@@ -46,32 +49,22 @@ namespace SkateDate.Controllers
             return View(model);
         }
 
-        //[HttpPost]
-        //public IActionResult SearchUsers()
-        //{
-        //    // TODO: Logged in user can SEARCH all users and make "FriendRequest"
-        //    return Redirect("/Friend");
-        //}
-
         // Post action for "searchusers" & Index -- makes "FriendRequests"
         [HttpPost]
         public IActionResult FriendRequester(string hidden)
         {
             var user = hidden;
-            var them = context.ApplicationUsers.Single(u => u.UserName == user);
-            var me = context.ApplicationUsers.Single(u => u.UserName == User.Identity.Name);
-
+            var me = User.Identity.Name;
             FriendRequestList newRequester = new FriendRequestList()
             {
                 OwnerID = user,
-                RequesterID = me.UserName
+                RequesterID = me
             };
             FriendRequestsUserMade newRequestee = new FriendRequestsUserMade()
             {
-                OwnerID = me.UserName,
+                OwnerID = me,
                 RequesteeID = user
             };
-
             context.FriendRequestLists.Add(newRequester);
             context.FriendRequestsUserMades.Add(newRequestee);
             context.SaveChanges();
@@ -121,18 +114,20 @@ namespace SkateDate.Controllers
         [HttpPost]
         public IActionResult AddFriend(string hidden)
         {
-            var me = context.ApplicationUsers.Single(u => u.UserName == User.Identity.Name);
-            var them = context.ApplicationUsers.Single(u => u.UserName == hidden);
+            //Should i make sure these people have even requested one or the other's friendship?
+            //Else wise i feel this could be abused, but im not sure how.
+            var me = User.Identity.Name;
+            var them = hidden;
 
-            FriendList MyList = new FriendList() { OwnerID = me.UserName, FriendID = them.UserName };
-            FriendList TheirList = new FriendList() { OwnerID = them.UserName, FriendID = me.UserName };
+            FriendList MyList = new FriendList() { OwnerID = me, FriendID = them };
+            FriendList TheirList = new FriendList() { OwnerID = them, FriendID = me };
             context.FriendLists.Add(MyList);
             context.FriendLists.Add(TheirList);
 
             var a = context.FriendRequestLists.Single(f =>
-            f.OwnerID == me.UserName && f.RequesterID == them.UserName);
+            f.OwnerID == me && f.RequesterID == them);
             var b = context.FriendRequestsUserMades.Single(f =>
-            f.OwnerID == them.UserName && f.RequesteeID == me.UserName);
+            f.OwnerID == them && f.RequesteeID == me);
 
             context.FriendRequestLists.Remove(a);
             context.FriendRequestsUserMades.Remove(b);
@@ -155,14 +150,14 @@ namespace SkateDate.Controllers
         [HttpPost]
         public IActionResult RemoveFriend(string hidden)
         {
-            var me = context.ApplicationUsers.Single(u => u.UserName == User.Identity.Name);
-            var them = context.ApplicationUsers.Single(u => u.UserName == hidden);
+            var me =  User.Identity.Name;
+            var them =  hidden;
 
             var myflist = context.FriendLists.Single(l =>
-            l.OwnerID == me.UserName && l.FriendID == them.UserName);
+            l.OwnerID == me && l.FriendID == them);
 
             var theirflist = context.FriendLists.Single(l =>
-            l.OwnerID == them.UserName && l.FriendID == me.UserName);
+            l.OwnerID == them && l.FriendID == me);
 
             context.FriendLists.Remove(myflist);
             context.FriendLists.Remove(theirflist);

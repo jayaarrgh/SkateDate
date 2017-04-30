@@ -1,11 +1,14 @@
-﻿
+﻿@{
+    ViewData["Title"] = "My Posts";
+}
+<h2>My Posts</h2>
 @foreach (var post in Model)
 {
     <div>
         <h4>@post.Author</h4>
         <p>@post.Message</p>
         <p>@post.CreatedDate</p>
-        <p><a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">Click to Edit or Remove This Post</a></p>
+        <p>Click <a asp-controller="Posts" asp-action="Post" asp-route-PostID="@post.PostID">HERE</a> to Edit, Remove, or Comment on this Post</p>
     </div>
     <hr />
 }
