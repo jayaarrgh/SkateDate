@@ -2,13 +2,46 @@
 @{
     ViewData["Title"] = "Edit Post";
 }
+<style>
+    /* Always set the map height explicitly to define the size of the div. */
+    #map {
+        height: 375px;
+        width: 100%;
+    }
+</style>
 <h2>Edit Your Post</h2>
+
+<div id="map"></div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8&callback=initMap">
+</script>
+<script>
+        function initMap() {
+            var mapPos = { lat: @Model.Post.Lat, lng: @Model.Post.Lng };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: mapPos
+            });
+            var marker = new google.maps.Marker({
+                position: mapPos,
+                map: map,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker,'dragend',function(event) {
+                document.getElementById('lat').value = this.position.lat();
+                document.getElementById('lng').value = this.position.lng();
+            });
+        }
+</script>
 <div>
     <form asp-controller="Posts" asp-action="EditPost" method="post">
-        <label>Edit your post</label>
         <input type="hidden" asp-for="@Model.Post.PostID" name="Post.PostID" />
+        <input type="hidden" id="lat" asp-for="@Model.Post.Lat" name="Post.Lat" />
+        <input type="hidden" id="lng" asp-for="@Model.Post.Lng" name="Post.Lng"/>
         <textarea asp-for="@Model.Post.Message">@Model.Post.Message</textarea>
-        @*<input type="hidden" name="PostID" value="@Model.Post.PostID" />*@
+        
 
         <input type="submit" />
     </form>

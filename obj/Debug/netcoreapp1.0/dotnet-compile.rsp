@@ -240,6 +240,8 @@ C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migra
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428171957_AddRequestsAndFriendLists.Designer.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428212517_AddPostAndComments.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170428212517_AddPostAndComments.Designer.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170501011555_AddPostLatLng.cs
+C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\20170501011555_AddPostLatLng.Designer.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\ApplicationUser.cs
 C:\Users\jayaarrgh\Documents\lc101\CsharpWork\SkateDate\src\SkateDate\Models\Comment.cs

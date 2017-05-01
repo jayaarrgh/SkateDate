@@ -76,7 +76,9 @@ namespace SkateDate.Controllers
             Post post = new Post()
             {
                 Author = User.Identity.Name,
-                Message = model.Message
+                Message = model.Message,
+                Lat = model.Lat,
+                Lng = model.Lng
             };
 
             context.Posts.Add(post);
@@ -105,6 +107,8 @@ namespace SkateDate.Controllers
         public IActionResult EditPost(EditPostViewModel model)
         {
             context.Posts.Single(p => p.PostID == model.Post.PostID).Message = model.Post.Message; // Overwrites old message?
+            context.Posts.Single(p => p.PostID == model.Post.PostID).Lat = model.Post.Lat;
+            context.Posts.Single(p => p.PostID == model.Post.PostID).Lng = model.Post.Lng;
             context.SaveChanges();
             string a = String.Format("/Posts/Post?PostID={0}", model.Post.PostID);
             return Redirect(a);

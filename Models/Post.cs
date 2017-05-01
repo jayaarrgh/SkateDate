@@ -14,6 +14,8 @@ namespace SkateDate.Models
         //public string TimeFrame { get; set; } // View Model could validate this as date time range feature indtead       
         public DateTime CreatedDate { get; set; }
         //public bool IsPrivate { get; set; } // - Can checkfor friendship if this is true, or skip if false
+        public double Lat { get; set; }
+        public double Lng { get; set; }
 
         public IList<Comment> Comments { get; set; } // Will I now need Include statements???
 

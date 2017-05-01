@@ -2,7 +2,33 @@
 @{
     ViewData["Title"] = "View Post";
 }
+<style>
+    /* Always set the map height explicitly to define the size of the div. */
+    #map {
+        height: 375px;
+        width: 100%;
+    }
+</style>
+
 <p>Click to see all posts from <a asp-controller="Posts" asp-action="UsersPosts" asp-route-username="@Model.Post.Author"> @Model.Post.Author</a></p>
+<div id="map"></div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY3S6aJ9ZyXH_rKQav5NFmRovahVovcF8&callback=initMap">
+</script>
+<script>
+        function initMap() {
+            var mapPos = { lat: @Model.Post.Lat, lng: @Model.Post.Lng };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: mapPos
+            });
+            var marker = new google.maps.Marker({
+                position: mapPos,
+                    map: map,
+            });            
+        }
+</script>
 <p>Message: @Model.Post.Message</p>
 <p>Created: @Model.Post.CreatedDate</p>
 @{ if (User.Identity.Name == Model.Post.Author)
