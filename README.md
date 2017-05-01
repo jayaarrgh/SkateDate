@@ -1,10 +1,10 @@
 # SkateDate
 
 SkateDate allows users to make friends and posts that are viewable only to friends, so that they may arrange private meetings. 
-A future version will feature google maps API.
-The current version is text based.
+The app now features Google Maps API: Users can add markers on a map to show where they want to meet.
 
-CURRENT FUNCTIONALITY INCLUDES:
+
+# Current Functionality Includes:
 
 1. Users can register, log in, and log out.
 
@@ -23,3 +23,5 @@ CURRENT FUNCTIONALITY INCLUDES:
 
 7. Users can comment on friends' posts. Comments are editable by their authors. Comments are also removable by authors of the 
    comment and authors of the posts the comments relate to.
+
+8. NEW: Users can add markers to a map on their posts. These can be edited as well.
