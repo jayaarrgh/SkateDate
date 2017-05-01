@@ -106,7 +106,7 @@ namespace SkateDate.Controllers
         [HttpPost]
         public IActionResult EditPost(EditPostViewModel model)
         {
-            context.Posts.Single(p => p.PostID == model.Post.PostID).Message = model.Post.Message; // Overwrites old message?
+            context.Posts.Single(p => p.PostID == model.Post.PostID).Message = model.Post.Message; // Overwrites old stuff
             context.Posts.Single(p => p.PostID == model.Post.PostID).Lat = model.Post.Lat;
             context.Posts.Single(p => p.PostID == model.Post.PostID).Lng = model.Post.Lng;
             context.SaveChanges();

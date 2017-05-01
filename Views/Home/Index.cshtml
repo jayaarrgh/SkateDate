@@ -1,9 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<style>
+    h2 {
+	text-align: center;
+}
+    img {
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+</style>
 <h2> Welcome to SkateDate!</h2>
-
+<img src="~/images/Skatedate.png" align="middle"/>
 <p>
     This site allows users to make friends and posts that are viewable only to friends.
     The fully functioning version of the app will allow users to set locations for meetings using google maps.
@@ -17,9 +26,12 @@
     <li>The "Find Friends" page displays all users that are not already friends, have not been requested, and have not requested the users friendship.</li>
     <li>Friend requests are displayed bidirectionally: FriendRequests to the user, and friend requestes the user made which are still pending. These lists are updated when a requests is accepted.</li>
     <li>Users can accept or deny friend requests, thus removing the requester and requestee from eachothers lists respectively.</li>
-    <li> Users make posts which are only view-able by friends. Posts are editable and removable.</li>
+    <li>Users make posts which are only view-able by friends. Posts are editable and removable.</li>
+    <li>Users can view all posts from all friends. On this page, users can choose to view all posts from an individual user or view a
+   single post to access the ability to comment on that post.</li>
     <li>Users can comment on friends' posts. Comments are editable by their authors, and removable by authors of the comment AND authors of the posts the comments relate to.</li>
+    <li>Users can add markers to a map on their posts. These can be edited as well.</li>
 </ol>
 
-@*I would like to make profiles with pictures... But Idontreally know howto do that yet...
-    Im sure i could figure it out though*@
+@*FUTURE FEATURES: Personal Messages, LIVE FEED and NOTIFICATIONS!!! Using maps for directions???? *@
+
